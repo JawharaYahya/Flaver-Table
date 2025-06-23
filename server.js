@@ -1,0 +1,32 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
+
+
+//import routes
+const homeRoute = require('./routes/home');
+const recipeRoute = require('./routes/recipes');
+
+//Middleware
+app.use(cors());
+app.use(express.static(__dirname + '/public'));
+app.use(express.json());
+
+
+//routes ,the path between '' will be before each path inside recipeRoute
+app.use('/',homeRoute);
+app.use('/api/recipes',recipeRoute);
+
+
+//404 handler
+app.use((req,res)=> {
+res.status(404).send('Page not found <a href="/">Get Back Home</a>');
+});
+
+//start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,()=>{
+console.log(`Server running on  http://localhost:${PORT}`)
+});
