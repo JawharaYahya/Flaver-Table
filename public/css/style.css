@@ -7,6 +7,7 @@
 
 }
 
+
 body {
     justify-items: center;
     background-image:  url('../bkgJPG.JPG');
@@ -70,7 +71,7 @@ li{
 
 }
 #ingrediants-input{
-  width:42%;
+  width:50%;
   height: 40px;
   border-radius: 12px;
   padding: 8px;
@@ -80,18 +81,38 @@ li{
 background-color: rgb(164, 240, 114);
  font-family: "Tagesschrift", system-ui;
   font-weight: 400;
-  width: 60%;
-  height: 75px;
+  width: 50%;
+  height: 60px;
   border-radius: 8px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
-.searchbtn{
-  background-color: bisque;
+#searchbtn{
+   height: 60px;
+   color: brown;
+}
+
+#getRandomBtn{
+  background-color: rgb(164, 240, 114);
+  border-radius: 12px;
  font-family: "Tagesschrift", system-ui;
   font-weight: 400;
+margin-bottom:15px ;
+
+height: 50px;
+padding:15px 15px 15px 20px;
+margin-top:15px ;
 }
-
-
+#removeRecipes{
+background-color: rgb(164, 240, 114);
+ font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 50%;
+  height: 60px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-left: 130px;
+}
 
 .displaySection{
    display: flex;
@@ -102,11 +123,60 @@ background-color: rgb(164, 240, 114);
 font-family: "Tagesschrift", system-ui;
   font-weight: 400;
   width: 50%;
-  margin-bottom: 10px;
   padding: 20px;
   margin: 40px;
+   margin-bottom: 15px;
+}
+.displaySectionFav h2{
+  display: flex;
+  justify-content: center;
+ flex-direction: column;
+ background-color: rgb(228, 191, 143);
+ border-radius: 20px;
+font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 80%;
+  height: 40px;
+   margin: 40px;
+   padding-left: 30px;
 }
 
-li {
-display: inline-block;
+#favoriteList{
+  display: flex;
+  justify-content: center;
+ flex-direction: column;
+ background-color: rgb(228, 191, 143);
+ border-radius: 20px;
+font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 80%;
+   margin: 40px;
+}
+#randomRecipeContainer{
+   display: flex;
+  justify-content: center;
+ flex-direction: column;
+ background-color: rgb(228, 191, 143);
+ border-radius: 20px;
+font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 60%;
+  margin: 40px;
+  padding: 10px 10px 0px 15px;
+}
+
+footer{
+  font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  background-color: rgb(95, 66, 27);
+  width: 100%;
+  height: 40px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin-top: 20px;
+     padding: 10px;
+    text-align: center;
+    color: wheat;
+  
 }
