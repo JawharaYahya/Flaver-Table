@@ -27,7 +27,7 @@ try {
         }
         const number =5;
 const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=${number}&apiKey=${process.env.API_KEY}`);
-
+       console.log('Ingredients used for search:', ingredients);
     res.json(response.data);
 
 } catch (error) {
