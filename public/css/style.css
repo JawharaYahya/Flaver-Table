@@ -4,10 +4,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-
 }
-
-
 body {
     justify-items: center;
     background-image:  url('../bkgJPG.JPG');
@@ -44,7 +41,6 @@ h2{
 margin-top:30px ;
  font-family: "Tagesschrift", system-ui;
   font-weight: 400;
-  
 }
 .app-description{
   background-color: burlywood;
@@ -56,6 +52,7 @@ justify-content: center;
 justify-items: center;
 margin-top: 20px;
 width: 80%;
+border-radius: 20px;
 }
 p{
   margin: 10px;
@@ -129,7 +126,7 @@ font-family: "Tagesschrift", system-ui;
   font-weight: 400;
   width: 50%;
   padding: 20px;
-  margin: 40px;
+  margin: 20px;
    margin-bottom: 15px;
 }
 .displaySectionFav h2{
@@ -168,6 +165,33 @@ font-family: "Tagesschrift", system-ui;
   width: 60%;
   margin: 40px;
   padding: 10px 10px 0px 15px;
+}
+#insertRecipe{
+  d: flex;
+  justify-content: center;
+ flex-direction: column;
+ background-color: rgb(228, 191, 143);
+ border-radius: 20px;
+font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 80%;
+  margin: 20px;
+}
+.cell{
+    display: flex;
+  padding: 5px;
+  margin: 2px 0px 0px 5px;
+   border-radius: 10px;
+}
+#submitBtn{
+  margin: 5px;
+  background-color: rgb(164, 240, 114);
+ font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 50%;
+  height: 40px;
+  color: brown;
+  border-radius: 8px;
 }
 
 footer{
