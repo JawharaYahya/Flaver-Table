@@ -4,7 +4,8 @@ const cors = require('cors');
 
 const app = express();
 
-
+const pg = require("pg");
+const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 //import routes
 const homeRoute = require('./routes/home');
 const recipeRoute = require('./routes/recipes');
@@ -27,6 +28,12 @@ res.status(404).send('Page not found <a href="/">Get Back Home</a>');
 
 //start server
 const PORT = process.env.PORT || 3000;
+pool.connect()
+  .then(() => {
 app.listen(PORT,()=>{
 console.log(`Server running on  http://localhost:${PORT}`)
 });
+  })
+  .catch((err) => {
+    console.error("Failed to connect to PostgreSQL:", err);
+  });
