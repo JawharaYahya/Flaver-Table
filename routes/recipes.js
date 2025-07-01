@@ -49,6 +49,21 @@ router.get("/all", async (req, res) => {
     res.status(500).send("Error fetching");
   }
 });
+// GET single recipe byID
+router.get("/:id", async (req, res) => {
+  try {
+   const { id } = req.params;
+const result = await pool.query("SELECT * FROM recipes WHERE id=$1", [id]);
+    if (result.rows.length === 0) {
+      return res.status(404).send('Recipe Not Found');
+    }
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.log("error fetching recipe by id", error);
+
+    res.status(500).send("server error");
+  }
+});
 
 //POST insert data into the table
 

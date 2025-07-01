@@ -2,13 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Recipe</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <main>
+         <nav class="navBar">
+     <ul>
+        <li><a href="index.html">Search Recipes</a></li>
+        <li><a href="random.html">Generate Random Recipe</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+     </ul>
+    </nav> 
+        <form id="updateRecipe">
+         <label>Title:<input type="text" name="title" class="cell"></label><br>
+         <label>Image URL: <input type="url" name="image" class="cell"></label><br>
+         <label>Instructions: <textarea name="instructions" class="cell"></textarea></label><br>
+         <label>Ingredients(comma seperated) <input type="text" name="ingredients" class="cell"></label><br>
+         <label> Ready In (minutes) <input type="number" name="readyin" class="cell"></label><br>
+         <button type="submit" id="submitBtn">Update Recipe</button>
+        </form>
+    </main>
 
     <script src="js/app.js"></script>
 </body>
