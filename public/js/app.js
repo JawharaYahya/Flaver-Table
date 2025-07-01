@@ -141,7 +141,7 @@ console.log('missedIngredients',missedIngredients);
              <p><strong>Instructions: </strong>${recipe.instructions} </p>
              <p><strong>Ingredients: </strong>${recipe.ingredients= Array.isArray(recipe.ingredients)?recipe.ingredients.join(', '): 'N/A'} </p>
              <p><strong>Ready in: </strong>${recipe.readyin} minutes</p>
-             <button onclick="editRecipe(${recipe.id})">Edit</button>
+                 <a href="editRecipe.html?id=${recipe.id}"><button>Update</button></a>
              <button onclick="deleteRecipe(${recipe.id})">Delete</button>
 
             `;
@@ -230,30 +230,6 @@ console.log('missedIngredients',missedIngredients);
         }
     }
     
-    // Put functionality 
-
-
-async function UpdateFavorites(recipe) {
-        try {
-            const response = await fetch(`api/recipes/update/${recipe.id}`,{
-                 method: 'PUT',
-                 headers: {
-                'Content-Type': 'application/json'
-                 },
-                  body: JSON.stringify(recipe)
-         });
-        if (!response.ok) {
-            throw new Error("Failed to Update the favorite recipe");
-        }
-            const data =await response.json();
-        
-        displayFavorites();
-        return data;
-
-        } catch (error) {
-            console.log('Error Updating new recipe', error);   
-        }
-    }
     // insertForm
     const insertRecipe = document.getElementById('insertRecipe');
 if(insertRecipe){
@@ -295,4 +271,78 @@ if(insertRecipe){
     }
     });
  }
- displayFavorites();
+     displayFavorites();
+ // Put functionality 
+    async function UpdateFavorites(recipe) {
+        try {
+            const response = await fetch(`api/recipes/update/${recipe.id}`,{
+                 method: 'PUT',
+                 headers: {
+                'Content-Type': 'application/json'
+                 },
+                  body: JSON.stringify(recipe)
+         });
+        if (!response.ok) {
+            throw new Error("Failed to Update the favorite recipe");
+        }
+            const data =await response.json();
+        
+        displayFavorites();
+        return data;
+
+        } catch (error) {
+            console.log('Error Updating new recipe', error);   
+        }
+    }
+
+    const updateRecipeForm= document.getElementById('updateRecipe');
+ if (updateRecipeForm) {
+
+ //Grapping id from URL
+ const params =new URLSearchParams(window.location.search);
+ const id = params.get('id');
+ if(!id) {
+    updateRecipeForm.innerHTML= '<p>No id Recipe found in URL</p> ';
+    
+        }
+    async function loadRecipeData(id) {
+       try {
+        const response= await fetch(`api/recipes/${id}`);
+        if (!response.ok) {
+            throw new Error("Error fetching recipe");
+            
+        }
+        const recipe= await response.json();
+        // get value of each element inside the form
+        updateRecipeForm.elements['title'].value=recipe.title || '';
+        updateRecipeForm.elements['image'].value=recipe.image || '';
+        updateRecipeForm.elements['instructions'].value=recipe.instructions || '';
+        updateRecipeForm.elements['ingredients'].value = Array.isArray(recipe.ingredients)
+        ?recipe.ingredients.join(', ') 
+        : recipe.ingredients || '';
+        updateRecipeForm.elements['readyin'].value=recipe.readyin || '';
+       
+    } catch (error) {
+        console.log("Error loading recipe".error);
+        updateRecipeForm.innerHTML='<p>Erorr loading recipe data</p>';
+       }
+           }
+           loadRecipeData(id);
+         }
+    
+    updateRecipeForm.addEventListener('submit',async(e)=>{
+        e.preventDefault();
+        const updatedRecipe = {
+            id: id,
+            title: updateRecipeForm.elements['title'].value,
+            image: updateRecipeForm.elements['image'].value,
+            instructions: updateRecipeForm.elements['instructions'].value,
+            ingredients: updateRecipeForm.elements['ingredients'].value,
+            readyin: updateRecipeForm.elements['readyin'].value,
+        };
+
+        const result = await UpdateFavorites(updatedRecipe);
+        if (result) {
+            alert("Recipe updated successfully!");
+        }
+    });
