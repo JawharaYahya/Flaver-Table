@@ -296,11 +296,12 @@ if(insertRecipe){
     }
 
     const updateRecipeForm= document.getElementById('updateRecipe');
+    //Grapping id from URL
+    const params =new URLSearchParams(window.location.search);
+    const id = params.get('id');
  if (updateRecipeForm) {
 
- //Grapping id from URL
- const params =new URLSearchParams(window.location.search);
- const id = params.get('id');
+ 
  if(!id) {
     updateRecipeForm.innerHTML= '<p>No id Recipe found in URL</p> ';
     
