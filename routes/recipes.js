@@ -5,6 +5,8 @@ require('dotenv').config();
 
 const pg = require("pg");
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
+
+const routeGuard=require("../middleware/verifyToken");
 //Random recipe route
 router.get('/random',async (req,res)=>{
 try {
@@ -39,7 +41,7 @@ const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngr
 });
 
 // GET 
-router.get("/all", async (req, res) => {
+router.get("/all",routeGuard, async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM recipes");
     res.json(result.rows);
@@ -85,7 +87,7 @@ router.post("/insert", async (req, res) => {
 
 //PUT update the recipe by ID
 
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id",routeGuard, async (req, res) => {
   const { id } = req.params;
   const {title, image, instructions, ingredients, readyin} = req.body;
 

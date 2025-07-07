@@ -167,7 +167,7 @@ font-family: "Tagesschrift", system-ui;
   padding: 10px 10px 0px 15px;
 }
 #insertRecipe{
-  d: flex;
+  display: flex;
   justify-content: center;
  flex-direction: column;
  background-color: rgb(228, 191, 143);
@@ -192,6 +192,51 @@ font-family: "Tagesschrift", system-ui;
   height: 40px;
   color: brown;
   border-radius: 8px;
+}
+
+#loginBtn{
+  
+  background-color: rgb(164, 240, 114);
+ font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 30%;
+  height: 40px;
+  color: brown;
+  border-radius: 8px;
+}
+.logininput{
+  display: flex;
+  justify-content: center;
+ flex-direction: column;
+ background-color: rgb(219, 247, 142);
+ border-radius: 20px;
+font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 80%;
+  margin: 20px;
+  padding: 15px;
+}
+#loginForm{
+  display: flex;
+  justify-content: center;
+ flex-direction: column;
+ background-color: rgb(184, 174, 161);
+ border-radius: 20px;
+font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 80%;
+  margin: 20px;
+}
+#profileInfo{
+ display: flex;
+  justify-content: center;
+ flex-direction: column;
+ background-color: rgb(228, 191, 143);
+ font-family: "Tagesschrift", system-ui;
+  font-weight: 400;
+  width: 50%;
+  margin-top: 50px;
+  padding-left: 20px;
 }
 
 footer{

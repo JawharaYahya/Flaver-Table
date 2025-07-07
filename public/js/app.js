@@ -128,6 +128,10 @@ console.log('missedIngredients',missedIngredients);
             return;
         }
         const favorites = await getFavorites();
+        if (!favorites || !favorites.length) {
+    console.log("No favorites to display.");
+    return;
+  }
         favoriteList.innerHTML= '';
         if (favorites.length === 0){
             favoriteList.innerHTML =`<p>No favorites recipes added yet.</p>`;
@@ -188,15 +192,29 @@ console.log('missedIngredients',missedIngredients);
     //GET functionality
    
    async function getFavorites() {
+   
     try {
-        const response= await fetch('api/recipes/all');
-        if(!response.ok){
-        throw new Error("Failed to fetch favorites");
+        const token = localStorage.getItem('token');
+         console.log("Token before fetch:", token);
+        if(!token){
+            console.log("No token found");
+            return []; 
         }
-        const data =await response.json();
-        return data;
-    } catch (error) { 
-        console.log('error getting favorites',error);
+         const response= await fetch("http://localhost:4321/api/recipes/all", {
+         method: 'GET',
+         headers: {
+         'Content-Type': 'application/json',
+           Authorization: `Bearer ${token}`
+        },      
+      });
+      if (!response.ok) {
+      throw new Error(`Failed to fetch favorites: ${response.status}`);
+    }
+    const favorites=await response.json();
+    console.log("favorites recipes are: ",favorites);
+    return favorites;
+    } catch (error) {
+        console.log("error getting favorites",error);
         return [];
     }
     }
@@ -304,7 +322,7 @@ if(insertRecipe){
  
  if(!id) {
     updateRecipeForm.innerHTML= '<p>No id Recipe found in URL</p> ';
-    
+        
         }
     async function loadRecipeData(id) {
        try {
@@ -329,9 +347,7 @@ if(insertRecipe){
        }
            }
            loadRecipeData(id);
-         }
-    
-    updateRecipeForm.addEventListener('submit',async(e)=>{
+               updateRecipeForm.addEventListener('submit',async(e)=>{
         e.preventDefault();
         const updatedRecipe = {
             id: id,
@@ -347,3 +363,48 @@ if(insertRecipe){
             alert("Recipe updated successfully!");
         }
     });
+         }
+
+const loginForm= document.getElementById("loginForm");
+if (loginForm){
+loginForm.addEventListener("submit",async(e)=>{
+e.preventDefault();
+const username= loginForm.elements["username"].value;
+const email= loginForm.elements["email"].value;
+const password= loginForm.elements["password"].value;
+
+ try {
+            const loginResponse =await fetch("http://localhost:4321/user/login",{
+         method: "POST",
+          headers: { "Content-Type": "application/json" },
+         body: JSON.stringify({ username,email,password })
+            });
+
+            const data = await loginResponse.json();
+            if(!loginResponse.ok){
+                console.error("Login failed:", data.message);
+                return;
+            }
+            console.log("Login response data:", data); 
+            if(data.token){
+        localStorage.setItem("token",data.token);
+          console.log("Redirecting to profile...");
+         window.location.href = "profile.html"; // redirect to profile page
+        }
+        else{
+            console.error("No token received in login response:", data);
+
+        }
+            } catch (error) {
+                console.log("error fetching loginResponses", error);
+            
+            }
+            });
+}
+      
+      
+
+
+
+
+
