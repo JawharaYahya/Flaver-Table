@@ -30,3 +30,6 @@
 ### **Setup Inststructions**
 ### 1. Clone this repository
 ### 2. In the server directory, create inside it a `.env` file containing your Spoonacular API key:
+
+## Deployment link:
+https://flaver-table3.onrender.com
