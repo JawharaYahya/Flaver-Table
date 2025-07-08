@@ -6,7 +6,7 @@ async function fetchProfile() {
         return;
     }
     try {
-        const response= await fetch("http://localhost:4321/user/profile", {
+        const response= await fetch("https://flaver-table5.onrender.com/user/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
