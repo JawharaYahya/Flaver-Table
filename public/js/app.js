@@ -382,7 +382,7 @@ const password= loginForm.elements["password"].value;
  
             const data = await loginResponse.json();
             if(!loginResponse.ok){
-                console.error("Login failed:", data.message);
+                console.log("Login failed:", data.message);
                 return;
             }
             console.log("Login response data:", data); 
@@ -401,8 +401,44 @@ const password= loginForm.elements["password"].value;
             }
             });
 }
-      
-      
+      //register fetch
+      const registerForm= document.getElementById("registerForm");
+      if (registerForm){
+registerForm.addEventListener("submit", async (e)=>{
+e.preventDefault();
+
+const username= registerForm.elements["username"].value;
+const email= registerForm.elements["email"].value;
+const password= registerForm.elements["password"].value;
+try {
+    const registerResponse= await fetch("http://localhost:4321/user/register",{
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username,email,password })
+     });
+
+    const data= await registerResponse.json();
+
+     if(!registerResponse.ok){
+        if (registerResponse.status === 409) {
+    alert("This username or email is already taken. Please choose another.");
+        }
+        else {
+          alert("Registration failed. Please try again.");
+          console.log("Error details:", data);
+        }
+        return;
+    }
+    alert("Registration successful! Please log in to continue.");
+        window.location.href = "login.html";
+   
+} catch (error) {
+    window.alert("Your registeration process failed, try again");
+    console.log("Error registering", error);
+    
+    }
+});
+}
 
 
 
