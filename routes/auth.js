@@ -34,15 +34,15 @@ try {
          `INSERT INTO users (username,email, password) VALUES ($1, $2,$3) RETURNING id, username`,
       [username,email,hashPassword]
     );
-    res.status(200).send(result.rows[0]);
+    return res.status(200).json({ message: "User registered successfully", user: result.rows[0] });
 } catch (error) {
     console.log("error registering",error);
     
-}if(error.code === "23505") {
-      res.status(409).send("username already exsist");
+if(error.code === "23505") {
+return res.status(409).json({ message: "Username or email already exists" });
     }
-    res.status(500).send("Error",error);
-
+return res.status(500).json({ message: "Internal server error", error: error.message });
+}
 });
 
 //create login (post method)
@@ -75,7 +75,7 @@ if(error.code === "23505") {
     return res.status(409).json({ message: "Username already exists" });
 
     }
-res.status(500).json({ message: "Server error", error: error.message });
+return res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 module.exports = router;

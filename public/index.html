@@ -18,10 +18,17 @@
      <main> 
       <center>
       <div class="app-description">
-<h2>Welcome to the Flavor Table</h2>
-<p>Discover delicious recipes based on ingredients you already have at home. </p>
-   <p>Whether you're looking for inspiration or trying to use up specific items, </p>
-   <p>Flavor Table helps you find perfect recipes.</p>
+ <h2 class="welcome-text">
+  👋 Welcome to Flavor Table!  </h2>
+  <p>Create an account to explore a world of delicious recipes tailored to your taste.</p> 
+  <p>Already have an account? <a href="login.html">Log in here</a> and dive back into your saved favorites anytime, anywhere!
+</p>
+    <form id="registerForm" >
+      <label >UserName:<input name="username" class="logininput"></label>
+      <label > Email:<input name="email" class="logininput"></label>
+      <label > Password:<input name="password" class="logininput"></label>
+      <button id="loginBtn" type="submit" class="logininput">Register</button>
+    </form>
 
    <p><strong>Features:</strong></p>
     <ul>
@@ -32,13 +39,6 @@
     </ul>
     <p>Start by entering ingredients in the search bar below or click "Random Recipe" above to get inspired!</p>
     <p><strong>Have a fav dish?</strong> Share it with the Flavor Table community by filling out the form below!</p>
-
-    <form id="loginForm" >
-      <label >UserName:<input name="username" class="logininput"></label>
-      <label > Email:<input name="email" class="logininput"></label>
-      <label > Password:<input name="password" class="logininput"></label>
-      <button id="loginBtn" type="submit" class="logininput">Login</button>
-    </form>
 
       </div> <div id="indexContainer"> 
       <div id="insertRecipe"></div>
