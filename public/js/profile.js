@@ -24,6 +24,6 @@ async function fetchProfile() {
          profileInfo.innerHTML=`Error loading profile`;
         console.log("Error loading profile",error)
     }
-}
+} 
     
     fetchProfile();

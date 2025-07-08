@@ -7,7 +7,7 @@ function routeGuard(req,res,next) {
 
     const tokenFromHeader = authHeader && authHeader.split(" ")[1]; //check if authHeader is exist EXTRACT and split the token
       const tokenFromQuery = req.query.token;
-
+ 
     const token = tokenFromHeader || tokenFromQuery;
       console.log("=== TOKEN DEBUG START ===");
     console.log("authHeader:", authHeader);

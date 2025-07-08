@@ -65,7 +65,7 @@ const token= jwt.sign(
       process.env.JWT_SECRET,
       { expiresIn: "2h" }
 );
-   
+    
   return res.json({ token }); 
 } catch (error) {
     console.log("error logining",error);

@@ -379,7 +379,7 @@ const password= loginForm.elements["password"].value;
           headers: { "Content-Type": "application/json" },
          body: JSON.stringify({ username,email,password })
             });
-
+ 
             const data = await loginResponse.json();
             if(!loginResponse.ok){
                 console.error("Login failed:", data.message);

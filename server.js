@@ -11,7 +11,7 @@ const homeRoute = require('./routes/home');
 const recipeRoute = require('./routes/recipes');
 const auth =require('./routes/auth');
 
-
+ 
 //Middleware
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
