@@ -9,7 +9,9 @@ const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 //import routes
 const homeRoute = require('./routes/home');
 const recipeRoute = require('./routes/recipes');
+const auth =require('./routes/auth');
 
+ 
 //Middleware
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
@@ -19,7 +21,7 @@ app.use(express.json());
 //routes ,the path between '' will be before each path inside recipeRoute
 app.use('/',homeRoute);
 app.use('/api/recipes',recipeRoute);
-
+app.use('/user',auth);
 
 //404 handler
 app.use((req,res)=> {

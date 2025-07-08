@@ -30,3 +30,17 @@
 ### **Setup Inststructions**
 ### 1. Clone this repository
 ### 2. In the server directory, create inside it a `.env` file containing your Spoonacular API key:
+
+
+## How many hours did it take you to complete this assignment?
+
+### It took me more than 15 hours to complete this assignment, including solving the tasks and debugging issues at each step.
+
+## Were there any parts of the lab you found challenging?
+
+### Yes, I found it challenging to:
+### Store the JWT token in localStorage and then retrieve and use it properly in the frontend code.
+### Create and manage the PostgreSQL database using pgAdmin, especially handling table creation and data consistency.
+
+## Deployment link:
+https://flaver-table-4.onrender.com
