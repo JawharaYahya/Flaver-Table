@@ -200,7 +200,7 @@ console.log('missedIngredients',missedIngredients);
             console.log("No token found");
             return []; 
         }
-         const response= await fetch("http://localhost:4321/api/recipes/all", {
+         const response= await fetch("https://flaver-table5.onrender.com/api/recipes/all", {
          method: 'GET',
          headers: {
          'Content-Type': 'application/json',
@@ -374,7 +374,7 @@ const email= loginForm.elements["email"].value;
 const password= loginForm.elements["password"].value;
 
  try {
-            const loginResponse =await fetch("http://localhost:4321/user/login",{
+            const loginResponse =await fetch("https://flaver-table5.onrender.com/user/login",{
          method: "POST",
           headers: { "Content-Type": "application/json" },
          body: JSON.stringify({ username,email,password })
@@ -402,6 +402,7 @@ const password= loginForm.elements["password"].value;
             });
 }
       //register fetch
+      // http://localhost:4321
       const registerForm= document.getElementById("registerForm");
       if (registerForm){
 registerForm.addEventListener("submit", async (e)=>{
@@ -411,7 +412,7 @@ const username= registerForm.elements["username"].value;
 const email= registerForm.elements["email"].value;
 const password= registerForm.elements["password"].value;
 try {
-    const registerResponse= await fetch("http://localhost:4321/user/register",{
+    const registerResponse= await fetch("https://flaver-table5.onrender.com/user/register",{
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username,email,password })

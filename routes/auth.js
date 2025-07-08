@@ -8,6 +8,8 @@ const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 
 const routeGuard=require("../middleware/verifyToken");
 
+
+
 //create profile (secret)path
 router.get("/profile",routeGuard, async ( req,res) =>{
 try {
@@ -78,4 +80,5 @@ if(error.code === "23505") {
 return res.status(500).json({ message: "Server error", error: error.message });
   }
 });
+
 module.exports = router;
