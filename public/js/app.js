@@ -293,7 +293,7 @@ if(insertRecipe){
  // Put functionality 
     async function UpdateFavorites(recipe) {
         try {
-            const response = await fetch(`api/recipes/update/${recipe.id}`,{
+            const response = await fetch(`https://flaver-table5.onrender.com/api/recipes/update/${recipe.id}`,{
                  method: 'PUT',
                  headers: {
                 'Content-Type': 'application/json'
@@ -354,7 +354,9 @@ if(insertRecipe){
             title: updateRecipeForm.elements['title'].value,
             image: updateRecipeForm.elements['image'].value,
             instructions: updateRecipeForm.elements['instructions'].value,
-            ingredients: updateRecipeForm.elements['ingredients'].value,
+            ingredients: updateRecipeForm.elements['ingredients'].value
+             .split(',')
+             .map(i => i.trim()),            
             readyin: updateRecipeForm.elements['readyin'].value,
         };
 
