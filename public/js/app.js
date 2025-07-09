@@ -293,10 +293,13 @@ if(insertRecipe){
  // Put functionality 
     async function UpdateFavorites(recipe) {
         try {
+            const token = localStorage.getItem('token');
             const response = await fetch(`https://flaver-table5.onrender.com/api/recipes/update/${recipe.id}`,{
                  method: 'PUT',
                  headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+
                  },
                   body: JSON.stringify(recipe)
          });
